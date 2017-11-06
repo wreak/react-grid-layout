@@ -108,7 +108,7 @@ export default class ResponsiveReactGridLayout extends React.Component<Props<>, 
     // Get the initial layout. This can tricky; we try to generate one however possible if one doesn't exist
     // for this layout.
     const initialLayout = findOrGenerateResponsiveLayout(layouts, breakpoints, breakpoint,
-                                                         breakpoint, colNo, compactType);
+      breakpoint, colNo, compactType);
 
     return {
       layout: initialLayout,
@@ -121,7 +121,7 @@ export default class ResponsiveReactGridLayout extends React.Component<Props<>, 
 
     // Allow parent to set width or breakpoint directly.
     if (
-         nextProps.width != this.props.width
+      nextProps.width != this.props.width
       || nextProps.breakpoint !== this.props.breakpoint
       || !isEqual(nextProps.breakpoints, this.props.breakpoints)
       || !isEqual(nextProps.cols, this.props.cols)
@@ -166,10 +166,10 @@ export default class ResponsiveReactGridLayout extends React.Component<Props<>, 
       // Find or generate a new layout.
       const newCols: number = getColsFromBreakpoint(newBreakpoint, cols);
       let layout = findOrGenerateResponsiveLayout(layouts, breakpoints, newBreakpoint,
-                                                  lastBreakpoint, newCols, compactType);
+        lastBreakpoint, newCols, compactType);
 
       // This adds missing items.
-      layout = synchronizeLayoutWithChildren(layout, nextProps.children, newCols, compactType);
+      layout = synchronizeLayoutWithChildren(layout, nextProps.children, newCols, Infinity, compactType);
 
       // Store the new layout.
       layouts[newBreakpoint] = layout;
